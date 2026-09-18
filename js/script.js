@@ -204,12 +204,10 @@ yesButton.addEventListener("click", async function() {
 
     } catch (error) {
 
-        console.error("Could not send YES:", error);
+    console.error("Could not send YES:", error);
 
-        // حتی اگر ارسال پیام مشکل داشت،
-        // صفحه برای کاربر قفل نمی‌شود.
-        changePage("pageEight");
-    }
+    alert("خطا در ارسال پاسخ: " + error.message);
+}
 
 });
 
@@ -243,12 +241,10 @@ noButton.addEventListener("click", async function() {
 
     } catch (error) {
 
-        console.error("Could not send NO:", error);
+    console.error("Could not send NO:", error);
 
-        // حتی اگر ارسال پیام مشکل داشت،
-        // صفحه برای کاربر قفل نمی‌شود.
-        changePage("pageNine");
-    }
+    alert("خطا در ارسال پاسخ: " + error.message);
+}
 
 });
 
