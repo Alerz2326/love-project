@@ -179,32 +179,78 @@ nextButtons.forEach(function(button) {
    YES
 ========================= */
 
-yesButton.addEventListener(
-    "click",
-    function() {
+yesButton.addEventListener("click", async function() {
 
-        console.log("Answer: YES");
+    try {
+
+        const response = await fetch(
+            "https://love-project-api.alireza10-sh.workers.dev/",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    answer: "yes"
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
 
         changePage("pageEight");
 
+    } catch (error) {
+
+        console.error("Could not send YES:", error);
+
+        // حتی اگر ارسال پیام مشکل داشت،
+        // صفحه برای کاربر قفل نمی‌شود.
+        changePage("pageEight");
     }
-);
+
+});
 
 
 /* =========================
    NO
 ========================= */
 
-noButton.addEventListener(
-    "click",
-    function() {
+noButton.addEventListener("click", async function() {
 
-        console.log("Answer: NO");
+    try {
+
+        const response = await fetch(
+            "https://love-project-api.alireza10-sh.workers.dev/",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    answer: "no"
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
 
         changePage("pageNine");
 
+    } catch (error) {
+
+        console.error("Could not send NO:", error);
+
+        // حتی اگر ارسال پیام مشکل داشت،
+        // صفحه برای کاربر قفل نمی‌شود.
+        changePage("pageNine");
     }
-);
+
+});
 
 
 /* =========================
